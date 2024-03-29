@@ -215,9 +215,11 @@ idm <- function(formula01,
     call <- match.call()
     ptm <- proc.time()
     if(missing(formula01))stop("Argument formula01 is missing.")
-    if(missing(formula02))stop("Argument formula02 is missing.")	
-    if(class(formula01)!="formula")stop("The argument formula01 must be a class 'formula'.")	
-    if(class(formula02)!="formula")stop("The argument formula02 must be a class 'formula'.")		
+    if(missing(formula02))stop("Argument formula02 is missing.")
+    if(!inherits(formula01, "formula"))stop("The argument formula01 must be a class 'formula'.")
+    # if(class(formula01)!="formula")stop("The argument formula01 must be a class 'formula'.")	
+    if(!inherits(formula02, "formula"))stop("The argument formula02 must be a class 'formula'.")		
+    # if(class(formula02)!="formula")stop("The argument formula02 must be a class 'formula'.")		
     ## if(missing(formula02)) formula02 <- formula01
     if(missing(formula12)) formula12 <- formula02
     # }}}
@@ -230,7 +232,8 @@ idm <- function(formula01,
     # }}}
     # {{{ evaluate formula in data 
     if(missing(data)) stop("Need a data frame.")
-    if(class(data)!="data.frame")stop("Argument 'data' must be a data.frame")
+    if(!inherits(data, "data.frame"))stop("Argument 'data' must be a data.frame")
+    # if(class(data)!="data.frame")stop("Argument 'data' must be a data.frame")
     m <- match.call()
     m01 <- m02 <- m12 <- m[match(c("","data","subset","na.action"),names(m),nomatch=0)]
     m01$formula <- formula01

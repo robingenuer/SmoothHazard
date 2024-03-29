@@ -10,3 +10,5 @@ src/type.mod
 src/tailles.mod
 src/optim.mod
 src/parameters.mod
+^.*\.Rproj$
+^\.Rproj\.user$
